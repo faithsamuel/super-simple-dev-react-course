@@ -11,11 +11,24 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      const button = <button>Hello</button>;
+
+      const name = "Faith";
+      const price = 10;
+      const div = (
+        <div>
+          <p>My name is {name}</p>
+
+          <div style={{border: "1px solid #ccc"}}>
+            <p>Cotton socks</p>
+            <p>Price: ${price} </p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      );
 
 
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(button);
+      ReactDOM.createRoot(container).render(div);
     </script>
   </body>
 </html>
