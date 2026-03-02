@@ -13,14 +13,19 @@
     <script type="text/babel">
 
       const name = "Faith";
-      const price = 10;
+      const socksPrice = 10;
+      const tShirt = 8;
+      const ProductCost = socksPrice + (tShirt * 2);
+
+      console.log("Total cost:" + ProductCost);
+      
       const div = (
         <div>
           <p>My name is {name}</p>
 
           <div style={{border: "1px solid #ccc"}}>
             <p>Cotton socks</p>
-            <p>Price: ${price} </p>
+            <p>Price: ${socksPrice} </p>
             <button>Add to Cart</button>
           </div>
         </div>
