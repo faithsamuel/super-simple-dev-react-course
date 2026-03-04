@@ -31,6 +31,9 @@
           <p>My name is {name}</p>
           <p>Today is {dayjs().format('MMMM D')}</p>
           <p>Current time: {dayjs().format('HH:mm:ss')}</p>
+          <p>Current time!!!: {setInterval(()=>{dayjs().format('HH:mm:ss')}, 1000)}</p>
+
+          
 
           <div style={{border: "1px solid #ccc"}}>
             <p>Product cost: ${ProductCost}</p>
@@ -43,7 +46,9 @@
 
 
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(div);
+      const root = ReactDOM.createRoot(container);
+      
+      root.render(div);
     </script>
   </body>
 </html>
