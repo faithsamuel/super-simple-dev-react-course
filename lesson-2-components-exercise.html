@@ -14,34 +14,32 @@
 
     <script type="text/babel">
 
-      function LoginForm(){
-        return (
-          <>
-            <div>
-              <input 
-                placeholder="Email"
-               />
-            </div>
-               
-            <div>
-              <input 
-                placeholder="Password"
-                type="password" 
-               />
-            </div>
+      function ProductDetails({title, price, discountPrice}) {
 
-            <button>Login</button>
-            <button>Sign up</button>
-          </>
+          const discount = discountPrice ?  (
+            <div>
+              <p><del>Price: {price}</del></p>
+              <p>Discount price: {discountPrice}</p>
+            </div>
+            ) : (
+              <p>Price: ${price}</p>
+            );
+
+        return (
+          <div>
+            <p>{title}</p>
+             {discount}
+            <button>Add to Cart</button>
+          </div>
         );
-              
       }
 
       function App(){
         return (
           <>
-            <p>Hello, welcome to my website</p>
-            <LoginForm />
+            <ProductDetails title="Cotton socks" price="10.90" discountPrice = "5.45"/>
+            <ProductDetails title="Tennis balls" price="6.00"/>
+            <ProductDetails title="Plain T-Shirt" price="7.99"/>
           </>
         );
               
