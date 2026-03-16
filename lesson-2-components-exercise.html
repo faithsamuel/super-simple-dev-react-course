@@ -14,7 +14,7 @@
 
     <script type="text/babel">
 
-      function ProductDetails({title, price, discountPrice}) {
+      function ProductDetails({title, price, discountPrice, imageSrc}) {
 
           const discount = discountPrice ?  (
             <div>
@@ -27,6 +27,7 @@
 
         return (
           <div>
+            <img src={imageSrc} />
             <p>{title}</p>
              {discount}
             <button>Add to Cart</button>
@@ -37,9 +38,9 @@
       function App(){
         return (
           <>
-            <ProductDetails title="Cotton socks" price="10.90" discountPrice = "5.45"/>
-            <ProductDetails title="Tennis balls" price="6.00"/>
-            <ProductDetails title="Plain T-Shirt" price="7.99"/>
+            <ProductDetails title="Cotton socks" price="10.90" discountPrice = "5.45" imageSrc="cotton-socks.png"/>
+            <ProductDetails title="Tennis balls" price="6.00" imageSrc="tennis-balls.png"/>
+            <ProductDetails title="Plain T-Shirt" price="7.99" imageSrc="plain-t-shirt.png"/>
           </>
         );
               
