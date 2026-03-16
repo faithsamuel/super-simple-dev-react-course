@@ -26,18 +26,6 @@
       // Chat message component
 
       function ChatMessage({message, sender}) {
-        // const message = props.message;
-        // const sender = props.sender;
-        // const {message, sender} = props;
-
-        // if(sender === "robot") {
-        //   return (
-        //      <div>
-        //     <img src="robot.png" width="50" />
-        //     {message}
-        //   </div>
-        //   );
-        // }
 
         return(
           <div>
@@ -54,24 +42,37 @@
       }
 
       function App() {
+
+        const chatMessages = [{
+          message: "Hello chatbot", 
+          sender: "user"
+        }, {
+          message: "Hello! How can I help you?", 
+          sender: "robot"
+        },{
+          message: "Can you get me today's date", 
+          sender: "user"
+        },{
+          message: "Today is March 27", 
+          sender: "robot"
+        },
+        ];
+
+        const chatMessageComponent = ChatMessages.map((chatMessage)=> {
+          return (
+            <ChatMessage 
+              message= {chatMessage.message}
+              sender = {chatMessage.sender}
+            />
+          );
+        });
+
+
         return (
-           <div>
+           <>
               <ChatInput />
-              <ChatMessage 
-                message="hello chatbot" 
-                sender="user"
-              />
-              <ChatMessage 
-                message="Hello! How can I help you?"  sender="robot"
-              />
-              <ChatMessage 
-                message="can you get me today's date" sender="user" 
-              />
-              <ChatMessage 
-                message="Today is March 7" 
-                sender="robot" 
-              />
-          </div>
+              {chatMessageComponent}
+          </>
         );
        
       }
