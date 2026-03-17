@@ -58,20 +58,18 @@
         },
         ];
 
-        const chatMessageComponent = ChatMessages.map((chatMessage)=> {
+
+        return (
+           <>
+              <ChatInput />
+              {chatMessages.map((chatMessage)=> {
           return (
             <ChatMessage 
               message= {chatMessage.message}
               sender = {chatMessage.sender}
             />
           );
-        });
-
-
-        return (
-           <>
-              <ChatInput />
-              {chatMessageComponent}
+        })}
           </>
         );
        
