@@ -41,35 +41,59 @@
         );
       }
 
-      function App() {
+      // Chat messages component
 
+      function ChatMessages () {
         const chatMessages = [{
           message: "Hello chatbot", 
-          sender: "user"
+          sender: "user",
+          id: "id1"
         }, {
           message: "Hello! How can I help you?", 
-          sender: "robot"
+          sender: "robot",
+          id: "id2"
         },{
           message: "Can you get me today's date", 
-          sender: "user"
+          sender: "user",
+          id: "id3"
         },{
           message: "Today is March 27", 
-          sender: "robot"
+          sender: "robot",
+          id: "id4"
         },
         ];
+
+        function sendMessage() {
+          console.log('Send Message');
+        }
+
+        return (
+          <>
+              <button onClick={sendMessage}>Send message</button>
+              {
+                chatMessages.map((chatMessage)=> {
+                  return (
+                    <ChatMessage 
+                      key = {chatMessage.id}
+                      message= {chatMessage.message}
+                      sender = {chatMessage.sender}
+                    />
+                  );
+            })
+              }
+          </>
+        );
+      }
+
+      function App() {
+
+        
 
 
         return (
            <>
               <ChatInput />
-              {chatMessages.map((chatMessage)=> {
-          return (
-            <ChatMessage 
-              message= {chatMessage.message}
-              sender = {chatMessage.sender}
-            />
-          );
-        })}
+              <ChatMessages />
           </>
         );
        
