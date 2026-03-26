@@ -18,17 +18,20 @@
 
       function App(){
 
+        const [count, setCount] = React.useState(0);
+        
         function increaseCount() {
             setCount(count + 1);
 
-            // const counterText
         }
 
-        const [count, setCount] = React.useState(0);
+        const counterText = count === 1 ? "time" : "times";
+
+        
 
         return (
           <>
-            <button onClick={increaseCount}>Clicked {count} {countText}</button>
+            <button onClick={increaseCount}>Clicked {count} {counterText}</button>
           </>
         );
               
