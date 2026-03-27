@@ -14,11 +14,8 @@
 
     <script type="text/babel">
 
-      
-
-      function App(){
-
-        const [count, setCount] = React.useState(0);
+      function Counter({count, setCount}) {
+        
         
         function increaseCount() {
             setCount(count + 1);
@@ -27,11 +24,28 @@
 
         const counterText = count === 1 ? "time" : "times";
 
-        
+        return (
+          <>
+              <button onClick={increaseCount}>Clicked {count} {counterText}</button>
+          </>
+        );
+
+      }
+
+      function App(){
+        const [count, setCount] = React.useState(0);
+
+        function resetCount() {
+
+           setCount(0);
+        }
 
         return (
           <>
-            <button onClick={increaseCount}>Clicked {count} {counterText}</button>
+            <Counter  count={count} setCount={setCount} />
+            <Counter  count={count} setCount={setCount} />
+            
+            <button onClick={resetCount}>Reset</button>
           </>
         );
               
