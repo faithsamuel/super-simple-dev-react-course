@@ -17,10 +17,20 @@
       
 
       function App(){
+        [name, setName] = React.useState('HI');
+
         
+
         return (
           <>
-            
+            <form>
+              <input
+                value={name}
+                onChange={(e)=> {e.target.value}}
+              />
+            </form>
+
+            <p>{name}</p>
           </>
         );
               
