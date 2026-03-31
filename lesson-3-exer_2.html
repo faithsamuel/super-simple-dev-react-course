@@ -17,20 +17,23 @@
       
 
       function App(){
-        [name, setName] = React.useState('HI');
-
         
+       const [name, setName] = React.useState('');
+
+    
 
         return (
           <>
             <form>
               <input
                 value={name}
-                onChange={(e)=> {e.target.value}}
+                onChange={(e)=> setName(e.target.value)}
               />
+              <button onClick={() => setName('')}>Reset</button>
+              <button onClick={()=> setName('Faith')}>Example</button>
             </form>
 
-            <p>{name}</p>
+            <p>Hello {name}</p>
           </>
         );
               
