@@ -16,14 +16,24 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     
     <script type="text/babel">
+
       function ChatInput({chatMessages, setChatMessages }) {
         const [inputText, setInputText] = React.useState('');
+
+        const [isLoading, setIsLoading] = React.useState(false);
 
         function saveInputText(event) {
           setInputText(event.target.value);
         }
 
        async function sendMessage() {
+
+        if(isLoading || inputText === '') {
+          return;
+        }
+
+
+        setIsLoading(true);
 
         setInputText('');
         
@@ -35,6 +45,8 @@
               id: crypto.randomUUID()
             }
           ];
+
+          setIsLoading(false);
 
           setChatMessages(newChatMessages);
 
@@ -75,6 +87,8 @@
           </div>
         );
       }
+
+
 
       // Chat message component
 
