@@ -43,6 +43,11 @@
               message: inputText,
               sender: 'user',
               id: crypto.randomUUID()
+            },
+            {
+              message: 'Loading...',
+              sender: 'robot',
+              id: crypto.randomUUID()
             }
           ];
 
@@ -50,10 +55,12 @@
 
           setChatMessages(newChatMessages);
 
+          setInputText('');
+
           const response = await Chatbot.getResponseAsync(inputText);
          
           setChatMessages([
-            ...newChatMessages,
+            ...newChatMessages.slice(0, newChatMessages.length - 1),
             {
               message: response,
               sender: 'robot',
@@ -61,7 +68,7 @@
             }
           ]);
 
-          setInputText('');
+          // setInputText('');
         }
 
 
