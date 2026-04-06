@@ -3,6 +3,10 @@
   <head>
     <title>Chatbot</title>
     <style>
+
+      body{
+        font-family: Arial;
+      }
       
       .send-button {
         background-color: rgb(25, 135, 84);
@@ -29,8 +33,22 @@
 
       .app-container {
         max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
+      .chat-message-user {
+        display: flex;
+        justify-content: end;
+      }
+
+      .chat-message-robot{
+        display: flex;
+      }
+
+      .chat-message-text {
+        background-color: rgb(238, 238,238);
+      }
 
     </style>
   </head>
@@ -135,11 +153,14 @@
       function ChatMessage({message, sender}) {
 
         return(
-          <div>
+          <div className={
+            sender === 'user' ? 'chat-message-user' : 'chat-message-robot'}>
             {sender === "robot" && (
               <img src="robot.png" width="50" />
             )}
-           {message}
+            <div className="chat-message-text">
+              {message}
+            </div>
            {sender === "user" && (
             <img src="user.png" width="50" />
            )} 
