@@ -5,6 +5,9 @@
     <style>
 
       body{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        
         font-family: Arial;
       }
       
@@ -35,6 +38,8 @@
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+
+        height: 100vh;
       }
 
       .chat-message-user {
@@ -56,6 +61,10 @@
         margin-left: 10px;
         margin-bottom: 20px;
         max-width: 300px;
+      }
+
+      .chat-message-profile {
+        width: 45px;
       }
 
     </style>
@@ -164,13 +173,17 @@
           <div className={
             sender === 'user' ? 'chat-message-user' : 'chat-message-robot'}>
             {sender === "robot" && (
-              <img src="robot.png" width="50" />
+              <img src="robot.png" 
+               className="chat-message-profile"
+              />
             )}
             <div className="chat-message-text">
               {message}
             </div>
            {sender === "user" && (
-            <img src="user.png" width="50" />
+            <img src="user.png"
+             className="chat-message-profile"
+            />
            )} 
           
           </div>
@@ -221,12 +234,13 @@
 
         return (
            <div className="app-container">
-              <ChatInput
-                chatMessages={chatMessages}
-                setChatMessages={setChatMessages}
-               />
               <ChatMessages
                 chatMessages={chatMessages}
+               />
+
+               <ChatInput
+                chatMessages={chatMessages}
+                setChatMessages={setChatMessages}
                />
           </div>
         );
