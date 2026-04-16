@@ -6,6 +6,10 @@
       .pri-btn{
         background-color: rgb(25, 135, 84);
       }
+
+      .red-btn{
+        background-color: red;
+      }
     </style>
   </head>
   <body>
@@ -20,12 +24,19 @@
     <script type="text/babel">
 
       function App(){
-        const [isButtonOn, setButtonOn] = React.useState(false);
+        const [isButtonOn, setBtn] = React.useState(true);
 
+        function toggleBtn() {
+          setBtn(!isButtonOn)
+        }
         
         return (
           <>
-            <button className="pri-btn">ON</button>
+            <button
+              onClick={toggleBtn}
+              className={isButtonOn === true ? "pri-btn" : "red-btn"}>
+                {isButtonOn === true ? 'ON' : "OFF"}
+              </button>
           </>
         );
               
