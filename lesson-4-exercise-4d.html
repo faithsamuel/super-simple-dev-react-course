@@ -37,7 +37,11 @@
 
       function LoginForm(){
 
-        const [showPassword] = React.useState(false);
+        const [showPassword, togglePassword] = React.useState(false);
+
+        function toggle() {
+          togglePassword(!showPassword);
+        }
         
         return (
           <>
@@ -50,10 +54,14 @@
             <div>
               <input 
                 placeholder="Password"
-                type="password" 
+                type={showPassword === true ? "text" : "password"} 
                />
 
-               <button className="show-btn">👁️Show</button>
+               <button 
+                className="show-btn"
+                onClick={toggle}
+               
+               >👁️Show</button>
             </div>
 
             <button className="btn">Login</button>
