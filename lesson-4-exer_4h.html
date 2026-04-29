@@ -3,6 +3,29 @@
   <head>
     <title>Lesson 3 Exercises</title>
   </head>
+  <style>
+
+    body{
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .container{
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+      background-color: rgb(222,222,222);
+      align-items: center;
+    }
+
+    button{
+      background-color: rgb(25,135,84);
+      margin: 0px 4px;
+      padding: 10px;
+      border: 0px;
+      color: white;
+    }
+  </style>
   <body>
     <div class="js-container"></div>
 
@@ -37,7 +60,7 @@
         const counterText = count === 1 ? "time" : "times";
 
         return (
-          <>
+          <div className="container">
            
            <button
             ref={increaseBtnRef} 
@@ -45,7 +68,7 @@
             
             <button onClick={resetCount}>Reset</button>
             <button onClick={autoClick}>Auto Click</button>
-          </>
+          </div>
         );
               
       }
