@@ -13,7 +13,7 @@ function useAutoScroll({dependencies}) {
             containerElem.scrollTop = containerElem.scrollHeight;
           }
 
-        }, dependencies);
+        }, [dependencies]);
 
         return chatMessagesRef;
 
