@@ -1,9 +1,19 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
 import "./CheckoutPage.css";
 import { CheckoutHeader } from "./checkout/CheckoutHeader";
 import { formatMoney } from "../utils/money";
 
 export default function CheckoutPage({ cart }) {
+  const [deliveryOptions, setDeliveryOptions] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/api/delivery-options?expand=estimatedDeliveryTime")
+      .then((response) => {
+        setDeliveryOptions(response.data);
+      });
+  }, []);
   return (
     <>
       <link rel="icon" type="/image/svg+xml" href="/images/cart-favicon.png" />
@@ -56,6 +66,30 @@ export default function CheckoutPage({ cart }) {
                       <div className="delivery-options-title">
                         Choose a delivery option:
                       </div>
+                      {deliveryOptions.map((deliveryOption) => {
+                        return (
+                          <div
+                            key={deliveryOption.id}
+                            className="delivery-option"
+                          >
+                            <input
+                              type="radio"
+                              checked
+                              className="delivery-option-input"
+                              name="delivery-option-1"
+                            />
+                            <div>
+                              <div className="delivery-option-date">
+                                Tuesday, June 21
+                              </div>
+                              <div className="delivery-option-price">
+                                FREE Shipping
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+
                       <div className="delivery-option">
                         <input
                           type="radio"
