@@ -7,7 +7,7 @@ export function OrdersGrid({ orders }) {
     <div className="orders-grid">
       {orders.map((order) => {
         return (
-          <div className="order-container">
+          <div key={order.id} className="order-container">
             <OrderHeader order={order} />
 
             <OrderDetailsGrid order={order} />

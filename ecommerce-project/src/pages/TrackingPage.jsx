@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import dayjs from "dayjs";
+import { useParams } from "react-router";
 import "./TrackingPage.css";
 import { Header } from "../components/Header";
 
-export function TrackingPage() {
+export function TrackingPage({ cart }) {
+  const { orderId, productId } = useParams();
+  const [order, setOrder] = useState(null);
+
   return (
     <>
       <link
@@ -11,7 +17,7 @@ export function TrackingPage() {
         href="/images/tracking-favicon.png"
       />
       <title>Tracking</title>
-      <Header />
+      <Header cart={cart} />
 
       <div className="tracking-page">
         <div className="order-tracking">
