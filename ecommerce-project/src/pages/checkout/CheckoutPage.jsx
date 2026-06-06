@@ -30,6 +30,7 @@ export default function CheckoutPage({ cart, loadCart }) {
 
     fetchPaymentSummary();
   }, [cart]);
+
   return (
     <>
       <link rel="icon" type="/image/svg+xml" href="/images/cart-favicon.png" />
