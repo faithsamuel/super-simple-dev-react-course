@@ -16,12 +16,19 @@ export default function CheckoutPage({ cart, loadCart }) {
       );
 
       setDeliveryOptions(response.data);
-
-      // response = await axios.get("/api/payment-summary");
-      setPaymentSummary(response.data);
     };
 
     fetchCheckoutData();
+  }, []);
+
+  useEffect(() => {
+    const fetchPaymentSummary = async () => {
+      const response = await axios.get("/api/payment-summary");
+
+      setPaymentSummary(response.data);
+    };
+
+    fetchPaymentSummary();
   }, [cart]);
   return (
     <>
