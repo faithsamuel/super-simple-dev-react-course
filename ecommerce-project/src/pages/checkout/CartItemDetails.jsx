@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { formatMoney } from "../../utils/money";
+import "./CheckoutPage.css";
 
 export function CartItemDetails({ cartItem, loadCart }) {
   const deleteCartItem = async () => {
@@ -19,7 +20,7 @@ export function CartItemDetails({ cartItem, loadCart }) {
         </div>
         <div className="product-quantity">
           <span>
-            Quantity:{" "}
+            Quantity: <input type="text" className="quantity-textbox" />
             <span className="quantity-label">{cartItem.quantity}</span>
           </span>
           <span className="update-quantity-link link-primary">Update</span>
