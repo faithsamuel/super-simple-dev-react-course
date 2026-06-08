@@ -5,15 +5,23 @@ import "./CheckoutPage.css";
 
 export function CartItemDetails({ cartItem, loadCart }) {
   const [isUpdatingQuantity, setIsUpdatingQuantity] = useState(false);
+  const [quantity, setQuantity] = useState(cartItem.quantity);
   const deleteCartItem = async () => {
     await axios.delete(`/api/cart-items/${cartItem.productId}`);
 
     await loadCart();
   };
 
-  const updateQuantity = () => {
+  const updateQuantity = async (event) => {
+    setQuantity(event.target.value);
     // Switch between true and false for isUpdatingQuantity.
     if (isUpdatingQuantity) {
+      await axios.put(`/api/cart-items/${cartItem.productId}`, {
+        quantity: Number(quantity),
+      });
+
+      await loadCart();
+
       setIsUpdatingQuantity(false);
     } else {
       setIsUpdatingQuantity(true);
@@ -32,7 +40,12 @@ export function CartItemDetails({ cartItem, loadCart }) {
           <span>
             Quantity:
             {isUpdatingQuantity ? (
-              <input type="text" className="quantity-textbox" />
+              <input
+                type="text"
+                className="quantity-textbox"
+                value={quantity}
+                onChange={updateQuantityInput}
+              />
             ) : (
               <span className="quantity-label">{cartItem.quantity}</span>
             )}
