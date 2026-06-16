@@ -27,6 +27,10 @@ export function CartItemDetails({ cartItem, loadCart }) {
       setIsUpdatingQuantity(true);
     }
   };
+
+  const updateQuantityInput = (event) => {
+    setQuantity(event.target.value);
+  };
   return (
     <>
       <img className="product-image" src={cartItem.product.image} />
