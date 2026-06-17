@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import "../components/header.css";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate, useSearchParams } from "react-router";
 import WhiteLogo from "../assets/images/logo-white.png";
 import WhiteMobileLogo from "../assets/images/mobile-logo-white.png";
 
 export function Header({ cart }) {
+  const navigate = useNavigate();
   let totalQuantity = 0;
 
-  const [search, setSearch] = useState("");
+  const [searchParams] = useSearchParams();
+
+  const searchText = searchParams.get("search");
+
+  const [search, setSearch] = useState(searchText || "");
 
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
@@ -19,6 +24,7 @@ export function Header({ cart }) {
 
   const searchProducts = () => {
     console.log(search);
+    navigate(`/?search=${search}`);
   };
   return (
     <div className="header">
