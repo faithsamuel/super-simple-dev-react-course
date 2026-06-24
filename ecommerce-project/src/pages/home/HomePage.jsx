@@ -5,7 +5,7 @@ import { Header } from "../../components/Header";
 import "./HomePage.css";
 import { ProductsGrid } from "./ProductsGrid";
 
-export function HomePage({ cart, loadCart }) {
+export default function HomePage({ cart, loadCart }) {
   const [products, setProducts] = useState([]);
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search");
