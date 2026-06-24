@@ -4,7 +4,15 @@ import { NavLink, useNavigate, useSearchParams } from "react-router";
 import WhiteLogo from "../assets/images/logo-white.png";
 import WhiteMobileLogo from "../assets/images/mobile-logo-white.png";
 
-export function Header({ cart }) {
+type HeaderProps = {
+  cart: {
+    productId: string;
+    quantity: number;
+    deliveryOptionId: string;
+  }[];
+};
+
+export function Header({ cart }: HeaderProps) {
   const navigate = useNavigate();
   let totalQuantity = 0;
 
@@ -18,7 +26,7 @@ export function Header({ cart }) {
     totalQuantity += cartItem.quantity;
   });
 
-  const updateSearchInput = (event) => {
+  const updateSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
 
